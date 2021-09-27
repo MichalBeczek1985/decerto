@@ -1,14 +1,12 @@
 package com.homework.decerto.entity;
 
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import javax.persistence.*;
 import java.util.Date;
 
-@Data
+@Setter
+@Getter
 @Entity
 @Table
 @Builder
@@ -18,8 +16,8 @@ public class Quote {
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
     private Long id;
-    private String firstName;
-    private String lastName;
+    @ManyToOne(targetEntity=Author.class, cascade = CascadeType.ALL)
+    private Author author;
     private String quote;
     @Column(updatable = false)
     private Date creationDate;

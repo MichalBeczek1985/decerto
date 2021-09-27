@@ -1,17 +1,15 @@
 package com.homework.decerto.dto;
 
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import com.homework.decerto.entity.Author;
+import lombok.*;
 
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
-@Data
+@Setter
+@Getter
 public class QuoteDTO {
     private Long id;
-    private String firstName;
-    private String lastName;
+    private Author author;
     private String quote;
 }

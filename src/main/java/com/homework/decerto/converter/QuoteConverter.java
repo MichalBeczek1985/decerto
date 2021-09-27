@@ -11,13 +11,11 @@ import java.util.stream.Collectors;
 @Component
 public class QuoteConverter {
     public QuoteDTO entityToDTO(Quote quote){
-        QuoteDTO quoteDTO = QuoteDTO.builder()
+        return QuoteDTO.builder()
                 .id(quote.getId())
-                .firstName(quote.getFirstName())
-                .lastName(quote.getLastName())
+                .author(quote.getAuthor())
                 .quote(quote.getQuote())
                 .build();
-        return  quoteDTO;
     }
 
     public List<QuoteDTO> entitiesToDTOs(List<Quote> quotes){
@@ -25,18 +23,13 @@ public class QuoteConverter {
     }
 
     public Quote dtoToEntity(QuoteDTO quoteDTO){
-        Quote quote = Quote.builder()
+        return Quote.builder()
                 .id(quoteDTO.getId())
-                .firstName(quoteDTO.getFirstName())
-                .lastName(quoteDTO.getLastName())
+                .author(quoteDTO.getAuthor())
                 .quote(quoteDTO.getQuote())
                 .creationDate(new Date())
                 .updateDate(new Date())
                 .build();
-        return quote;
     }
 
-    public List<Quote> dtosToEntities(List<QuoteDTO> quotes){
-        return quotes.stream().map(x->dtoToEntity(x)).collect(Collectors.toList());
-    }
 }
